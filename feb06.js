@@ -130,10 +130,10 @@ function isAnagram(s, t) {
 
 }
 
-let s = "anagram"; 
-let t = "nagaram" 
+// let s = "anagram"; 
+// let t = "nagaram" 
 // let v = "nagaram";
-console.log(isAnagram(s, t))
+// console.log(isAnagram(s, t))
 
 /*
 Given a sorted array nums, remove the duplicates in-place such that duplicates appeared at most twice and return the new length.
@@ -190,16 +190,16 @@ function removeDuplicates(nums) {
        for (let i = 1; i < nums.length; i++) {
          if (nums[i] !== nums[i - 1]) {
            count = 1;
-           console.log("reset", i);
+        //    console.log("reset", i);
          } else {
            count++;
          }
 
          if (count > 2) {
-           console.log(nums, i, count);
+        //    console.log(nums, i, count);
            nums.splice(i, 1);
            i -= 1;
-           console.log("new", nums);
+        //    console.log("new", nums);
          }
        }
 
@@ -208,5 +208,95 @@ function removeDuplicates(nums) {
        return nums.length;
 }
 
-let nums = [1, 1, 1, 2, 2, 3];
-console.log(removeDuplicates(nums))
+// let nums = [1, 1, 1, 2, 2, 3];
+// console.log(removeDuplicates(nums))
+
+/*
+Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+ 
+
+Example 1:
+
+Input: s = "()"
+Output: true
+Example 2:
+
+Input: s = "()[]{}"
+Output: true
+Example 3:
+
+Input: s = "(]"
+Output: false
+Example 4:
+
+Input: s = "([)]"
+Output: false
+Example 5:
+
+Input: s = "{[]}"
+Output: true
+*/
+
+function isValid(string) {
+    // let pairs = {
+    //     "{" : "}",
+    //     "(" : ")",
+    //     "[" : "]"
+    // }
+
+
+    // let chars = [];
+
+    // for(let i = 0; i < string.length; i++) {
+
+
+    // }
+}
+
+/*
+Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.
+
+The number of elements initialized in nums1 and nums2 are m and n respectively. You may assume that nums1 has a size equal to m + n such that it has enough space to hold additional elements from nums2.
+
+ 
+
+Example 1:
+
+Input: nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3
+Output: [1,2,2,3,5,6]
+Example 2:
+
+Input: nums1 = [1], m = 1, nums2 = [], n = 0
+Output: [1]
+ 
+
+Constraints:
+
+nums1.length == m + n
+nums2.length == n
+0 <= m, n <= 200
+1 <= m + n <= 200
+-109 <= nums1[i], nums2[i] <= 109
+*/
+
+function mergeSortedArrays(nums1, m, nums2, n) {
+    for (let i = 0; i < n; i++) {
+      let addIndex = m + i;
+      nums1[addIndex] = nums2[i];
+    }
+
+    return nums1.sort((a, b) => a - b);
+
+} 
+
+// let nums1 = [1,2,3,0,0,0]
+// let m = 3
+// let nums2 = [2,5,6]
+// let n = 3
+
+// console.log(mergeSortedArrays(nums1, m, nums2, n))
