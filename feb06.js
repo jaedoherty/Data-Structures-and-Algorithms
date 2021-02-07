@@ -300,3 +300,77 @@ function mergeSortedArrays(nums1, m, nums2, n) {
 // let n = 3
 
 // console.log(mergeSortedArrays(nums1, m, nums2, n))
+
+/*
+We have a list of points on the plane.  Find the K closest points to the origin (0, 0).
+
+(Here, the distance between two points on a plane is the Euclidean distance.)
+
+You may return the answer in any order.  The answer is guaranteed to be unique (except for the order that it is in.)
+
+ 
+
+Example 1:
+
+Input: points = [[1,3],[-2,2]], K = 1
+Output: [[-2,2]]
+Explanation: 
+The distance between (1, 3) and the origin is sqrt(10).
+The distance between (-2, 2) and the origin is sqrt(8).
+Since sqrt(8) < sqrt(10), (-2, 2) is closer to the origin.
+We only want the closest K = 1 points from the origin, so the answer is just [[-2,2]].
+Example 2:
+
+Input: points = [[3,3],[5,-1],[-2,4]], K = 2
+Output: [[3,3],[-2,4]]
+(The answer [[-2,4],[3,3]] would also be accepted.)
+ 
+
+Note:
+
+1 <= K <= points.length <= 10000
+-10000 < points[i][0] < 10000
+-10000 < points[i][1] < 10000
+*/
+
+function kClosest (points, K) {
+// points is a matrix of coordinates, x is [0] and y is [1]
+// make an array of the distances with coordinating indices to the points array
+// find the min of that array, return any indices that have that value in the min array, and then return those indices as the result
+
+    let distances = [];
+    points.forEach(point => {
+        let distance = Math.pow(point[0], 2) + Math.pow(point[1], 2)
+        distances.push(Math.sqrt(distance))
+    })
+
+    let min = Math.min(...distances);
+    let indices = [];
+
+    distances.forEach((distance, i) => {
+        if (distance === min) {
+            indices.push(i)
+        }
+    })
+
+    console.log(indices)
+
+    let result = [];
+
+    indices.forEach(index => {
+        if (result.length <= K) {
+            result.push(points[index])
+        }
+    })
+
+    return result;
+}
+
+let points = [
+  [3, 3],
+  [5, -1],
+  [-2, 4],
+]
+let K = 2;
+
+console.log(kClosest(points, K));
