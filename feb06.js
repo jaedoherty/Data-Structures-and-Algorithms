@@ -134,3 +134,79 @@ let s = "anagram";
 let t = "nagaram" 
 // let v = "nagaram";
 console.log(isAnagram(s, t))
+
+/*
+Given a sorted array nums, remove the duplicates in-place such that duplicates appeared at most twice and return the new length.
+
+Do not allocate extra space for another array; you must do this by modifying the input array in-place with O(1) extra memory.
+
+Clarification:
+
+Confused why the returned value is an integer, but your answer is an array?
+
+Note that the input array is passed in by reference, which means a modification to the input array will be known to the caller.
+
+Internally you can think of this:
+
+// nums is passed in by reference. (i.e., without making a copy)
+int len = removeDuplicates(nums);
+
+// any modification to nums in your function would be known by the caller.
+// using the length returned by your function, it prints the first len elements.
+for (int i = 0; i < len; i++) {
+    print(nums[i]);
+}
+ 
+
+Example 1:
+
+Input: nums = [1,1,1,2,2,3]
+Output: 5, nums = [1,1,2,2,3]
+Explanation: Your function should return length = 5, with the first five elements of nums being 1, 1, 2, 2 and 3 respectively. It doesn't matter what you leave beyond the returned length.
+Example 2:
+
+Input: nums = [0,0,1,1,1,1,2,3,3]
+Output: 7, nums = [0,0,1,1,2,3,3]
+Explanation: Your function should return length = 7, with the first seven elements of nums being modified to 0, 0, 1, 1, 2, 3 and 3 respectively. It doesn't matter what values are set beyond the returned length.
+ 
+
+Constraints:
+
+1 <= nums.length <= 3 * 104
+-104 <= nums[i] <= 104
+nums is sorted in ascending order.
+*/
+
+function removeDuplicates(nums) {
+
+    // keep track of a count of each number
+    // compare it to the number before it 
+    // if the same, increment count
+    // if count > 2, replace the current value with a ""
+    // if number is different, resent the count to 1
+
+       let count = 1;
+
+       for (let i = 1; i < nums.length; i++) {
+         if (nums[i] !== nums[i - 1]) {
+           count = 1;
+           console.log("reset", i);
+         } else {
+           count++;
+         }
+
+         if (count > 2) {
+           console.log(nums, i, count);
+           nums.splice(i, 1);
+           i -= 1;
+           console.log("new", nums);
+         }
+       }
+
+       nums.filter((num) => num !== "");
+
+       return nums.length;
+}
+
+let nums = [1, 1, 1, 2, 2, 3];
+console.log(removeDuplicates(nums))
