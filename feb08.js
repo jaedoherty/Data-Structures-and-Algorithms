@@ -57,7 +57,7 @@ function removeDuplicates(s, k) {
     return arr.join("");
 }
 
-let s = "abcd";
-let  k = 2;
+// let s = "abcd";
+// let  k = 2;
 
-console.log(removeDuplicates(s, k))
+// console.log(removeDuplicates(s, k))
