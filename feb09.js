@@ -208,3 +208,24 @@ String.prototype.symmetricSubstrings = function() {
 
     return result.sort();
 }
+
+// Write a function `titleize(str)` that capitalizes each word in a string like
+// a book title. 
+// Do not capitalize the following words (unless they are the first word in the 
+// string): ["a", "and", "of", "over", "the"]
+
+function titleize(str) {
+    let words = str.split(" ");
+    let noCap = ["a", "and", "of", "over", "the"] 
+    let result = [];
+    words.forEach((word, i) => {
+        if (i === 0 || !noCap.includes(word)) {
+            result.push(word[0].toUpperCase() + word.slice(1).toLowerCase())
+        } else {
+            result.push(word)
+        }
+    })
+
+    return result.join(" ")
+
+}
