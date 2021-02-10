@@ -184,3 +184,27 @@ String.prototype.realWordsInString = function(dictionary) {
 }
     
 // }
+
+// Write a `String.prototype.symmetricSubstrings` method that returns an array
+// of substrings which are palindromes in alphabetical order. Only include 
+// substrings of length > 1.
+// e.g. "cool".symmetricSubstrings() => ["oo"]
+
+String.prototype.symmetricSubstrings = function() {
+    let substrings = [];
+    for (let i = 0; i < this.length; i++) {
+        for (let j = i+1; j < this.length; j++) {
+            substrings.push(this.slice(i, j+1));
+        }
+    }
+
+    let result = [];
+
+    substrings.forEach(sub => {
+        if (sub === sub.split("").reverse().join("")) {
+            result.push(sub)
+        }
+    })
+
+    return result.sort();
+}
