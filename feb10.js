@@ -34,4 +34,13 @@ function jumbleSort(string, alphabet) {
     return arr.join("")
 } 
 
-console.log(jumbleSort("hello"))
+// console.log(jumbleSort("hello"))
+
+function recSum(numArr) {
+  if (!numArr.length) return 0;
+  if (numArr.length === 1) return numArr[0];
+
+  return numArr[0] + recSum(numArr.slice(1))
+}
+
+console.log(recSum([1, 2, 3, 4]))
