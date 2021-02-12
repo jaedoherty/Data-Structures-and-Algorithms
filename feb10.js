@@ -43,4 +43,36 @@ function recSum(numArr) {
   return numArr[0] + recSum(numArr.slice(1))
 }
 
-console.log(recSum([1, 2, 3, 4]))
+// console.log(recSum([1, 2, 3, 4]))
+
+const sort = function(right, left) {
+  let sorted = [];
+
+
+  while(left.length > 0 && right.length > 0) {
+
+    if (right[0] > left[0]) {
+      sorted.push(left.shift())
+    } else {
+      sorted.push(right.shift())
+    }
+  }
+ 
+  
+ 
+  
+  sorted = sorted.concat(right, left);
+
+  return sorted;
+  // return 
+}
+
+// Array.prototype.mergeSort = function(callback) {
+
+// }
+
+let right = [1, 5, 6]
+let left = [2, 3, 4]
+
+console.log(sort(right, left))
+// console.log(right.concat(left))
