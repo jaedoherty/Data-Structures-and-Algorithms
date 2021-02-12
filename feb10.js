@@ -15,13 +15,16 @@ function caesarCipher(str, shift) {
 }
 
 function jumbleSort(string, alphabet) {
-    if (!alphabet) let alphabet = "abcdefghijklmnopqrstuvwxyz";
+    if (!alphabet) {
+      alphabet = "abcdefghijklmnopqrstuvwxyz"
+    }
     let sorted = false;
     let arr = string.split("")
     while (!sorted) {
         sorted = true;
         for (let i = 0; i < arr.length - 1; i++) {
-            if (alphabet.indexOf(arr[i]) > alphabet.indexOf(arr[i + 1])) {
+          // console.log(alphabet)
+            if (alphabet.split("").indexOf(arr[i]) > alphabet.indexOf(arr[i + 1])) {
                 [arr[i], arr[i+1]] =[ arr[i+1], arr[i]]
                 sorted = false;
             }
@@ -30,3 +33,5 @@ function jumbleSort(string, alphabet) {
 
     return arr.join("")
 } 
+
+console.log(jumbleSort("hello"))
