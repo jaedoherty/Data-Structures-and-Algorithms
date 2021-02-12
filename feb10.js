@@ -13,3 +13,20 @@ function caesarCipher(str, shift) {
 
   return result.join("");
 }
+
+function jumbleSort(string, alphabet) {
+    if (!alphabet) let alphabet = "abcdefghijklmnopqrstuvwxyz";
+    let sorted = false;
+    let arr = string.split("")
+    while (!sorted) {
+        sorted = true;
+        for (let i = 0; i < arr.length - 1; i++) {
+            if (alphabet.indexOf(arr[i]) > alphabet.indexOf(arr[i + 1])) {
+                [arr[i], arr[i+1]] =[ arr[i+1], arr[i]]
+                sorted = false;
+            }
+        }
+    }
+
+    return arr.join("")
+} 
