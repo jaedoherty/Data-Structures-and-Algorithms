@@ -67,12 +67,30 @@ const sort = function(right, left) {
   // return 
 }
 
-// Array.prototype.mergeSort = function(callback) {
+Array.prototype.mergeSort = function(callback) {
+  if (this.length < 2) return this;
+  if (!callback) callback = sort;
+  let midIdx = Math.floor(this.length / 2);
+  console.log(this.slice(0, midIdx), this.slice(midIdx));
+  let right = callback(this.slice(0, midIdx))
+  let left = callback(this.slice(midIdx))
 
-// }
+  return right.mergeSort(callback).concat(left.mergeSort(callback))
+  
+}
 
 let right = [1, 5, 6]
 let left = [2, 3, 4]
 
-console.log(sort(right, left))
-// console.log(right.concat(left))
+
+console.log([1, 4, 6, 3, 7, 34, 53, 14].mergeSort())
+
+var name = "vloc";
+function foo() {
+   name = "devel; "
+   return;
+   function name(){}
+}
+
+foo();
+console.log(name)
