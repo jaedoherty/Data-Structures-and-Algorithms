@@ -17,3 +17,26 @@ Given the integer array candyType of length n, return the maximum number of diff
 // Input: candyType = [6,6,6,6]
 // Output: 1
 // Explanation: Alice can only eat 4 / 2 = 2 candies. Even though she can eat 2 candies, she only has 1 type.
+
+function maxCandies(candyType) {
+    let candies = {};
+    let max = candyType.length / 2;
+    candyType.forEach(candy => {
+        if (candies[candy]) {
+            candies[candy] += 1; 
+        } else {
+            candies[candy] = 1;
+        }
+    })
+    let numTypes = Object.values(candies).length;
+    console.log("func", max, numTypes)
+    if (numTypes > max) {
+        return max;
+    } else {
+        return numTypes;
+    }
+    // return numTypes < max ? numTypes : max 
+
+}
+
+console.log(maxCandies([1, 1, 2, 2, 3, 3]));
