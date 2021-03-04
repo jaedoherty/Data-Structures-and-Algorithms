@@ -29,14 +29,47 @@ function maxCandies(candyType) {
         }
     })
     let numTypes = Object.values(candies).length;
-    console.log("func", max, numTypes)
-    if (numTypes > max) {
-        return max;
-    } else {
-        return numTypes;
-    }
-    // return numTypes < max ? numTypes : max 
+
+    return numTypes > max ? max : numTypes
+
 
 }
 
-console.log(maxCandies([1, 1, 2, 2, 3, 3]));
+// console.log(maxCandies([1, 1, 2, 2, 3, 3]));
+
+/* You have a set of integers s, which originally contains all the numbers from 1 to n. Unfortunately, due to some error, one of the numbers in s got duplicated to another number in the set, which results in repetition of one number and loss of another number.
+
+You are given an integer array nums representing the data status of this set after the error.
+
+Find the number that occurs twice and the number that is missing and return them in the form of an array.
+
+ 
+
+Example 1:
+
+Input: nums = [1,2,2,4]
+Output: [2,3]
+Example 2:
+
+Input: nums = [1,1]
+Output: [1,2]
+*/
+
+function setMismatch(nums) {
+    let arr = nums.sort((a, b) => a - b)
+    // if (nums[0] !== 1) return [nums[0], 1]
+    console.log("sorted", arr)
+    let result = [];
+    let missing = ''
+    let dupe = '';
+    //comparing to index
+    arr.forEach((num, i) => {
+        if (num !== i + 1) {
+            result.push(num)
+        }
+    })
+
+    return result
+}
+
+console.log(setMismatch([3, 2, 3, 4, 6, 5]));
