@@ -58,13 +58,15 @@ Output: [1,2]
 function setMismatch(nums) {
     let arr = nums.sort((a, b) => a - b)
     // if (nums[0] !== 1) return [nums[0], 1]
-    console.log("sorted", arr)
+    let correct = [...Array(nums.length).keys()].map((num) => num + 1);
+    // console.log("sorted", arr, "correct", correct)
     let result = [];
-    let missing = ''
-    let dupe = '';
+    // let missing = "";
+    // let dupe = "";
     //comparing to index
+    // make a hash with key of correct # and val the count of that num
     arr.forEach((num, i) => {
-        if (num !== i + 1) {
+        if (num !== correct[i]) {
             result.push(num)
         }
     })
