@@ -31,3 +31,32 @@ function mergeSortedArrays (arr1, arr2) {
             result.push(arr1.shift())
         }
     }
+}
+
+// ---------------------------------------------------------------------------------------------------
+
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var longestConsecutive = function(nums) {
+    if (nums.length < 2) return nums.length; 
+    const sortedArray = nums.sort((a, b) => a - b)
+    let longestSequence = 0;
+    let currentSequence = 0;
+    for(let i = 0; i < sortedArray.length - 1; i++) {
+        let currentEle = sortedArray[i];
+        let nextEle = sortedArray[i + 1];
+        if (nextEle - currentEle === 1) {
+            currentSequence++;
+        } else if (nextEle - currentEle === 0) {
+            currentSequence = currentSequence; 
+        } else {
+            if (currentSequence > longestSequence) longestSequence = currentSequence + 1;
+            currentSequence = 0;
+        }
+    }
+    return longestSequence > currentSequence ? longestSequence : currentSequence + 1;
+};
+
+console.log(longestConsecutive([0, 3, 7, 2, 5, 8, 4, 6, 0, 1]));
