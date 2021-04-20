@@ -37,13 +37,34 @@ What is the event loop?
     - also queues user initiated events (click/keyboard events) or fetch responses or DOM events 
 
 What is a closure?
-- 
+- combination of a function bundled together with references to its surrounding state
+- gives you access to an outer function's scope from an inner function 
+- only available inside the outer function
+- allow you to associate data with a function that operates on that data
+- emulate private methods with closures
 
-How does prototypal inheritance work, and how is it different from classical inheritance? (this is not a useful question IMO, but a lot of people like to ask it)
-How does this work?
-What is event bubbling and how does it work? (this is also a bad question IMO, but a lot of people like to ask it too)
+What is a callback?
+- a function passed as an argument to another function
+- this allows a function to call another function
+
+What is an anonymous function?
+- a function without a name
+- often not accessible after its initial creation
+
+How does prototypal inheritance work, and how is it different from classical inheritance? 
+
+
+What is event bubbling and how does it work? 
+
+
 Describe a few ways to communicate between a server and a client. Describe how a few network protocols work at a high level (IP, TCP, HTTP/S/2, UDP, RTC, DNS, etc.)
+
+
 What is REST, and why do people use it?
+
+
 My website is slow. Walk me through diagnosing and fixing it. What are some performance optimizations people use, and when should they be used?
+
+
 What frameworks have you used? What are the pros and cons of each? Why do people use frameworks? What kinds of problems do frameworks solve?
 */
