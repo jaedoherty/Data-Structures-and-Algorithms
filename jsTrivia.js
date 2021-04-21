@@ -42,6 +42,7 @@ What is a closure?
 - only available inside the outer function
 - allow you to associate data with a function that operates on that data
 - emulate private methods with closures
+- ONLY a closure if it uses outside variable, otherwise it is a callback,
 
 What is a callback?
 - a function passed as an argument to another function
@@ -52,6 +53,41 @@ What is an anonymous function?
 - often not accessible after its initial creation
 
 How does prototypal inheritance work, and how is it different from classical inheritance? 
+
+PROTOTYPE CHAIN
+- prototype is a property of the constructor function that is an empty object
+- each prototype has the function as a property 
+- when an instance method is called, it first checks the instance to see if the function exists there
+- if method not on the instance, JS goes up the prototype chain and checks the prototype for the method 
+- next step of the prototype chain is to check the prototype of the constructor that made the prototype (the object class)
+
+CLASSICAL INHERITANCE: classes inherit from classes and create subclass relationships (ex. super)
+- creates tight coupling => inflexible hierarchy, instead of getting sub class you get the parent class as well
+
+PROTOTYPAL INHERITANCE: objects inherit directly from other objects (ex. __proto__)
+- one class inherits from another class (ex. dog class inherits from animal class)
+- make the dog class's proto point to the prototype of the animal class constructor 
+- do this by creating an instance of the constructor function
+    - instance sets __proto__ as the protoype of the constructor function
+- make a surrogate class 
+    - empty function, but set the prototype from the blank object it used to be to the animal prototype 
+    - then an instance of surrogate will point to the animal prototype 
+-replace the dog prototype with the __proto__ property of the surrogate instance 
+
+- establish base constructor
+- make a surrogate: an empty function with a prototype
+- reset the surrogate prototype to the parent class (Surrogate.prototype = Animal.prototype)
+- reset child class prototype to the surrogate proto (Dog.prototype = new Surrogate())
+
+- OR could do Object.create: takes any object as an argument, and the return value is a new object who's proto points to whatever we pass as the argument
+    - ex: Dog.prototype = Object.create(Animal.prototype)
+    - then need Dog.prototype.constructor = Dog or else dog instances will have an animal constructor
+    - will need to use call or apply to put the animal this attributes in the dog class (Animal.call(this, name))
+    - Syntactic sugar for this: class Dog extends Animal
+
+- access a parent class's overwritten functions with super
+    - in child constructor, call super with parameters for the base class's constructor
+
 
 
 What is event bubbling and how does it work? 
