@@ -1,3 +1,5 @@
+const { rawListeners } = require("node:process");
+
 /*
 
 
@@ -91,16 +93,47 @@ PROTOTYPAL INHERITANCE: objects inherit directly from other objects (ex. __proto
 
 
 What is event bubbling and how does it work? 
+- when an event happens on an element, it first runs the handlers on it, then on its parent, then all the way up on other ancestors
+- event.target shows you the most deeply nested element that caused the event
+- event.stopPropogation stops bubbling at the current level
 
 
 Describe a few ways to communicate between a server and a client. Describe how a few network protocols work at a high level (IP, TCP, HTTP/S/2, UDP, RTC, DNS, etc.)
 
 
 What is REST, and why do people use it?
+- REpresentational State Transfer: an architectural style for providing standards between computer systems on the web
+    - makes it easier for systems to communicate with each other
+- Stateless: server does not need to know anything about what state the client is in and vice versa
+    both the client and server can understand any messages received, even without seeing previous messages
+- Separation of Client and Server: implementation of client (frontend) and server (backend) can be done independently as lon as each side knows what format of messages to send the other
+    - improves the flexibility of interface across platforms and improves scalability by simplifying the server components
+- REST request consists of 
+    - HTTP verb: defines what kind of operation to perform
+        - GET: retrievve specific resource or collection of resources
+        - POST: create a new resource
+        - PUT/PATCH: update a specific resource
+        - DELETE: remove a specific resource
+    - Header: allows client to pass along info about the request
+        - Accept field: exusres that the server doe3s not send data that cannot be understood or processed by the client
+    - path to a resource the operation should be performed on
+        - ex. url in your ajax call
+    - optional message body containing data
+
 
 
 My website is slow. Walk me through diagnosing and fixing it. What are some performance optimizations people use, and when should they be used?
 
 
 What frameworks have you used? What are the pros and cons of each? Why do people use frameworks? What kinds of problems do frameworks solve?
+- backend: Rails
+- frontend: React
+- a framework is a software developed and used by developers to build applications
+- we use them becasue developers can take control of most of software development process from a single platform
+    - keeps code DRY
+    - assists in establishing better programming practices
+    - keeps consistent developing code with fewer bugs
+    - several code segments and functionalities are pre-built and pre-tested
+    - reduces time to develop an application
+
 */
