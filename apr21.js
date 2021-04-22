@@ -51,9 +51,7 @@ var MedianFinder = function() {
  * @return {void}
  */
 MedianFinder.prototype.addNum = function(num) {
-    const newNumbers = this.numbers;
-    newNumbers.push(num)
-    this.numbers = newNumbers;
+    this.numbers.push(num)
     return this.numbers;
 };
 
@@ -61,16 +59,17 @@ MedianFinder.prototype.addNum = function(num) {
  * @return {number}
  */
 MedianFinder.prototype.findMedian = function() {
+    console.log('find median', this.numbers)
     const middleIndex = this.numbers.length / 2;
-    if (this.numbers.length % 2 !== 0) {
-        return this.numbers[middleIndex]
-    } else {
+    if (this.numbers.length % 2 === 0) {
+        console.log('even', this.numbers, middleIndex)
         const mid1 = this.numbers[middleIndex];
         const mid2 = this.numbers[middleIndex - 1];
         return (mid1 + mid2) / 2;
+    } else {
+         console.log('odd', this.numbers, middleIndex)
+        return this.numbers[Math.floor(middleIndex)]
     }
-    
-    
 };
 
 /** 
