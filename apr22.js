@@ -26,3 +26,18 @@ Follow up:
 Could you solve it in O(n) time complexity and without using division?
 Could you solve it with O(1) constant space complexity? (The output array does not count as extra space for space complexity analysis.)
 */
+
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+ var productExceptSelf = function(nums) {
+    const result = [];
+    
+    nums.forEach((num, i) => {
+        let total = nums.reduce((accum, value) => accum * value);
+        result.push(total / nums[i])
+    })
+    
+    return result;
+};
