@@ -39,3 +39,43 @@ If all integer numbers from the stream are in the range [0, 100], how would you 
 If 99% of all integer numbers from the stream are in the range [0, 100], how would you optimize your solution?
 */
 
+/**
+ * initialize your data structure here.
+ */
+var MedianFinder = function() {
+    this.numbers = [];
+};
+
+/** 
+ * @param {number} num
+ * @return {void}
+ */
+MedianFinder.prototype.addNum = function(num) {
+    const newNumbers = this.numbers;
+    newNumbers.push(num)
+    this.numbers = newNumbers;
+    return this.numbers;
+};
+
+/**
+ * @return {number}
+ */
+MedianFinder.prototype.findMedian = function() {
+    const middleIndex = this.numbers.length / 2;
+    if (this.numbers.length % 2 !== 0) {
+        return this.numbers[middleIndex]
+    } else {
+        const mid1 = this.numbers[middleIndex];
+        const mid2 = this.numbers[middleIndex - 1];
+        return (mid1 + mid2) / 2;
+    }
+    
+    
+};
+
+/** 
+ * Your MedianFinder object will be instantiated and called as such:
+ * var obj = new MedianFinder()
+ * obj.addNum(num)
+ * var param_2 = obj.findMedian()
+ */
