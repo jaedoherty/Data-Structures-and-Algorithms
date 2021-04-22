@@ -51,7 +51,9 @@ var MedianFinder = function() {
  * @return {void}
  */
 MedianFinder.prototype.addNum = function(num) {
-    this.numbers.push(num)
+    let newNums = this.numbers;
+    newNums.push(num);
+    this.numbers = newNums.sort((a, b) => a - b)
     return this.numbers;
 };
 
@@ -67,7 +69,7 @@ MedianFinder.prototype.findMedian = function() {
         const mid2 = this.numbers[middleIndex - 1];
         return (mid1 + mid2) / 2;
     } else {
-         console.log('odd', this.numbers, middleIndex)
+         console.log('odd', this.numbers, Math.floor(middleIndex))
         return this.numbers[Math.floor(middleIndex)]
     }
 };
